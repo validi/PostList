@@ -1,16 +1,14 @@
-package com.aurora.sampleproject2.exoPlayer.myAdapter;
+package com.aurora.sampleproject2.adapter;
 
 import android.graphics.Bitmap;
 import android.graphics.Matrix;
 import android.media.ThumbnailUtils;
-import android.os.Handler;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.databinding.DataBindingUtil;
@@ -18,13 +16,9 @@ import androidx.recyclerview.widget.DiffUtil;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.sampleproject2.R;
-import com.aurora.sampleproject2.adapter.AAH_CustomViewHolder1;
-import com.aurora.sampleproject2.adapter.AAH_VideosAdapter1;
-import com.aurora.sampleproject2.adapter.PostsDiffCallback;
 import com.aurora.sampleproject2.databinding.RowPostItemImageBinding;
 import com.aurora.sampleproject2.databinding.RowPostItemTextBinding;
-import com.aurora.sampleproject2.exoPlayer.adapter.PlayerViewHolder;
-import com.aurora.sampleproject2.exoPlayer.model.MediaObject;
+
 import com.aurora.sampleproject2.model.db.entity.Post;
 import com.bumptech.glide.RequestManager;
 

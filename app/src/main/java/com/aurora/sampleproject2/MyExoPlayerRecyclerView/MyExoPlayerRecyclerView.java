@@ -1,4 +1,4 @@
-package com.aurora.sampleproject2.exoPlayer.MyExoPlayerRecyclerView;
+package com.aurora.sampleproject2.MyExoPlayerRecyclerView;
 
 import android.content.Context;
 import android.graphics.Point;
@@ -21,8 +21,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.aurora.sampleproject2.R;
 
-import com.aurora.sampleproject2.exoPlayer.model.MediaObject;
-import com.aurora.sampleproject2.exoPlayer.myAdapter.PlayerViewHolderExoPlayer;
+
+import com.aurora.sampleproject2.adapter.PlayerViewHolderExoPlayer;
 import com.aurora.sampleproject2.model.db.entity.Post;
 import com.bumptech.glide.RequestManager;
 import com.google.android.exoplayer2.ExoPlaybackException;
@@ -279,10 +279,15 @@ public class MyExoPlayerRecyclerView extends RecyclerView {
                 context, Util.getUserAgent(context, AppName));
         String mediaUrl = posts.get(targetPosition).getAddressFile();
         if (mediaUrl != null) {
-            MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
-                    .createMediaSource(Uri.parse(mediaUrl));
-            videoPlayer.prepare(videoSource);
-            videoPlayer.setPlayWhenReady(true);
+            try{
+                MediaSource videoSource = new ExtractorMediaSource.Factory(dataSourceFactory)
+                        .createMediaSource(Uri.parse(mediaUrl));
+                videoPlayer.prepare(videoSource);
+                videoPlayer.setPlayWhenReady(true);
+            }catch (Exception e){
+                Log.e(TAG,e.getMessage());
+            }
+
         }
     }
     /**

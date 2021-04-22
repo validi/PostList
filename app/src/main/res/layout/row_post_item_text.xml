@@ -12,9 +12,11 @@
 <androidx.cardview.widget.CardView
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+
     android:layout_marginBottom="@dimen/marginB_itemList">
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:layoutDirection="ltr"
+        android:textDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="10dp">

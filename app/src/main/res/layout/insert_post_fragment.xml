@@ -5,6 +5,8 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:layoutDirection="ltr"
+        android:textDirection="ltr"
         tools:context=".view.fragment.InsertPostFragment">
 
 
@@ -22,6 +24,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:id="@+id/edtDescription"
+                android:textDirection="rtl"
                 android:hint="توضیحات" />
         </com.google.android.material.textfield.TextInputLayout>
 

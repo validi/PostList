@@ -5,10 +5,12 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layoutDirection="ltr"
+    android:textDirection="ltr"
     android:orientation="vertical">
 
 
-            <com.aurora.sampleproject2.exoPlayer.MyExoPlayerRecyclerView.MyExoPlayerRecyclerView
+            <com.aurora.sampleproject2.MyExoPlayerRecyclerView.MyExoPlayerRecyclerView
                 android:id="@+id/exoPlayerRecyclerView"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
@@ -20,7 +22,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent">
 
-            </com.aurora.sampleproject2.exoPlayer.MyExoPlayerRecyclerView.MyExoPlayerRecyclerView>
+            </com.aurora.sampleproject2.MyExoPlayerRecyclerView.MyExoPlayerRecyclerView>
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/fabInsert"

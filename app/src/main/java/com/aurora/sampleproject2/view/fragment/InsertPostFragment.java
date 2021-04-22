@@ -9,7 +9,6 @@ import android.graphics.Matrix;
 import android.media.ThumbnailUtils;
 import android.os.Bundle;
 import android.provider.MediaStore;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,15 +34,13 @@ import com.dmcbig.mediapicker.entity.Media;
 
 
 import java.io.File;
-import java.io.InputStream;
 import java.util.ArrayList;
 
 public class InsertPostFragment extends Fragment {
 
     private InsertPostViewModel mViewModel;
     InsertPostFragmentBinding binding;
-    String selectedPath_Video = "";
-    String selectedPath_Image = "";
+    String selectedPath = "";
 
     public static InsertPostFragment newInstance() {
         return new InsertPostFragment();
@@ -109,157 +106,23 @@ public class InsertPostFragment extends Fragment {
 
             ImageView videoview = binding.imgPoster;
             try {
-                selectedPath_Video = select.get(0).path;
+                selectedPath = select.get(0).path;
 
 
-                Bitmap thumb = ThumbnailUtils.createVideoThumbnail(selectedPath_Video, MediaStore.Images.Thumbnails.MINI_KIND);
+                Bitmap thumb = ThumbnailUtils.createVideoThumbnail(selectedPath, MediaStore.Images.Thumbnails.MINI_KIND);
                 Matrix matrix = new Matrix();
                 Bitmap bmThumbnail = Bitmap.createBitmap(thumb, 0, 0,
                         thumb.getWidth(), thumb.getHeight(), matrix, true);
                 videoview.setImageBitmap(bmThumbnail);
             } catch (Exception e) {
-                File imageFile = new File(selectedPath_Video);
+                File imageFile = new File(selectedPath);
                 if (imageFile.exists()) {
                     videoview.setImageBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()));
                 }
             }
-            Toast.makeText(getContext(), selectedPath_Video.substring(selectedPath_Video.indexOf(".") + 1, selectedPath_Video.length()) + "", Toast.LENGTH_SHORT).show();
 
         }
     }
-
-//    public void filePicker() {
-//
-//        if (ActivityCompat.checkSelfPermission(getContext(), Manifest.permission.READ_EXTERNAL_STORAGE) != PackageManager.PERMISSION_GRANTED) {
-//            //dialogNewProduct.dismiss();
-//            ActivityCompat.requestPermissions(getActivity(), new String[]{Manifest.permission.READ_EXTERNAL_STORAGE}, 11);
-//        } else {
-//
-//
-//            Intent intent = new Intent(getActivity(), FilePickerActivity.class);
-//
-//            intent.putExtra(FilePickerActivity.CONFIGS, new Configurations.Builder()
-//                    .setCheckPermission(true)
-//                    .setShowImages(true)
-//                    .enableImageCapture(true)
-//                    .setShowVideos(true)
-//                    .enableVideoCapture(true)
-//                    .setMaxSelection(-1)
-//                    .setSingleChoiceMode(true)
-//                    .setSkipZeroSizeFiles(true)
-//                    .build());
-//           getActivity().startActivityForResult(intent, 102);
-//
-//
-//        }
-//
-//
-//    }
-//
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, Intent data) {
-//        super.onActivityResult(requestCode, resultCode, data);
-//        InputStream stream = null;
-//
-//        if(requestCode==102 && data!=null){
-//
-//            ArrayList<MediaFile> files = data.getParcelableArrayListExtra(FilePickerActivity.MEDIA_FILES);
-//
-//            Log.i("path",files.get(0).getPath()+"");
-//           // imgRemoveFile.setVisibility(View.VISIBLE);
-//
-//            selectedPath_Video = files.get(0).getPath();
-//            ImageView videoview = binding.imgPoster;
-//            try {
-//
-//                ;
-//                Bitmap thumb = ThumbnailUtils.createVideoThumbnail(selectedPath_Video, MediaStore.Images.Thumbnails.MINI_KIND);
-//                Matrix matrix = new Matrix();
-//                Bitmap bmThumbnail = Bitmap.createBitmap(thumb, 0, 0,
-//                        thumb.getWidth(), thumb.getHeight(), matrix, true);
-//                videoview.setImageBitmap(bmThumbnail);
-//            } catch (Exception e) {
-//                File imageFile = new File(selectedPath_Video);
-//                if (imageFile.exists()) {
-//                    videoview.setImageBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()));
-//                }
-//            }
-//        }
-////        else if(requestCode==200&&resultCode==PickerConfig.RESULT_CODE){
-////
-////            ArrayList<Parcelable> select = data.getParcelableArrayListExtra(PickerConfig.EXTRA_RESULT);//选择完后返回的list
-////            Parcel parcel = null;
-////            for (int i = 0; i <select.size() ; i++) {
-////
-////                //  Log.i("path",data.ge+"");
-////            }
-////
-////
-////        }
-////
-////        else if (resultCode == RESULT_OK) {
-////            if (requestCode == 13323) {
-////                //  Toast.makeText(this, getPath(data.getData())+"", Toast.LENGTH_SHORT).show();
-////                // VideoCompress(getPath(data.getData()));
-////
-////                Uri selectedImageUri = data.getData();
-////                Log.i("path",selectedImageUri+"");
-////                // Toast.makeText(this, selectedImageUri + "", Toast.LENGTH_SHORT).show();
-////                selectedPath_Video = getPath(selectedImageUri);
-////                Log.i("path",selectedImageUri+"");
-////                ImageView videoview = (ImageView) findViewById(R.id.imgAdd);
-////                try {
-////
-////                    ;
-////                    Bitmap thumb = ThumbnailUtils.createVideoThumbnail(selectedPath_Video, MediaStore.Images.Thumbnails.MINI_KIND);
-////                    Matrix matrix = new Matrix();
-////                    Bitmap bmThumbnail = Bitmap.createBitmap(thumb, 0, 0,
-////                            thumb.getWidth(), thumb.getHeight(), matrix, true);
-////                    videoview.setImageBitmap(bmThumbnail);
-////                } catch (Exception e) {
-////                    File imageFile = new File(selectedPath_Video);
-////                    if (imageFile.exists()) {
-////                        videoview.setImageBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()));
-////
-////                    }
-////
-////                }
-////
-////
-////                selectedPath_Image = "";
-////
-//////                uri = data.getData();
-//////                uriString = uri.toString();
-//////                Log.d("data", "onActivityResult: uri" + uriString);
-//////                //            myFile = new File(uriString);
-//////                //            ret = myFile.getAbsolutePath();
-//////                //Fpath.setText(ret);
-//////
-//////                try {
-//////                    ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//////                    String path = ret;
-//////                    InputStream in = getContentResolver().openInputStream(uri);
-//////
-//////                    byte[] bytes = getBytes(in);
-//////                    Log.i("path", "onActivityResult: bytes size=" + bytes.length);
-//////
-//////                    Log.i("path", "onActivityResult: Base64string=" + Base64.encodeToString(bytes, Base64.DEFAULT));
-//////
-////
-//////
-////                // }
-//////            catch (Exception e) {
-//////                    // TODO: handle exception
-//////                    e.printStackTrace();
-//////                    Log.d("error", "onActivityResult: " + e.toString());
-//////                }
-////
-////            }
-////
-////        }
-//
-//    }
-//
 
     @Override
     public void onRequestPermissionsResult(int requestCode,
@@ -271,7 +134,6 @@ public class InsertPostFragment extends Fragment {
                 // If request is cancelled, the result arrays are empty.
                 if (grantResults.length > 0
                         && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                    // Toast.makeText(Splash.this, "success", Toast.LENGTH_SHORT).show();
 
                     filePicker();
                     // permission was granted, yay! Do the
@@ -304,17 +166,17 @@ public class InsertPostFragment extends Fragment {
             Post post = new Post();
             post.setText(text);
             post.setLike(false);
-            if (selectedPath_Video.equals("")) {
+            if (selectedPath.equals("")) {
                 post.setMode("text");
             } else {
-                String formatFile = selectedPath_Video.substring(selectedPath_Video.indexOf(".") + 1, selectedPath_Video.length());
+                String formatFile = selectedPath.substring(selectedPath.indexOf(".") + 1, selectedPath.length());
                 if (formatFile.equals("png") || formatFile.equals("jpg") || formatFile.equals("jpeg")) {
                     post.setMode("image");
                 } else {
                     post.setMode("video");
                 }
             }
-            post.setAddressFile(selectedPath_Video);
+            post.setAddressFile(selectedPath);
 
             mViewModel.insertPost(post);
             // This callback will only be called when MyFragment is at least Started.

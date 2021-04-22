@@ -16,7 +16,8 @@
     android:layout_marginBottom="@dimen/marginB_itemList">
 
     <androidx.constraintlayout.widget.ConstraintLayout
-
+        android:layoutDirection="ltr"
+        android:textDirection="ltr"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:paddingBottom="20dp">
@@ -48,16 +49,6 @@
             app:layout_constraintStart_toEndOf="@+id/imageView"
             app:layout_constraintTop_toTopOf="@+id/imageView" />
 
-<!--        <com.allattentionhere.autoplayvideos.AAH_VideoImage-->
-<!--            android:id="@+id/videoView"-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="300dp"-->
-<!--            android:adjustViewBounds="true"-->
-<!--            android:layout_marginTop="5dp"-->
-<!--            app:layout_constraintEnd_toEndOf="parent"-->
-<!--            app:layout_constraintStart_toStartOf="parent"-->
-<!--            app:layout_constraintTop_toBottomOf="@+id/imageView"-->
-<!--            android:src="@drawable/img" />-->
 
         <FrameLayout
             android:id="@+id/mediaContainer"
@@ -78,7 +69,7 @@
                 android:layout_height="match_parent"
                 android:background="@android:color/white"
                 android:adjustViewBounds="true"
-                android:src="@drawable/cover" />
+                android:src="@drawable/img" />
 
             <ProgressBar
                 android:id="@+id/progressBar"

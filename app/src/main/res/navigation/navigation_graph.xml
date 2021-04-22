@@ -3,17 +3,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/navigation_graph"
-    app:startDestination="@id/listPostFragment">
+    app:startDestination="@id/splashFragment">
 
-    <fragment
-        android:id="@+id/listFragment"
-        android:name="com.aurora.sampleproject2.view.fragment.ListFragment"
-        android:label="list_fragment"
-        tools:layout="@layout/list_fragment" >
-        <action
-            android:id="@+id/action_listFragment_to_insertPostFragment"
-            app:destination="@id/insertPostFragment" />
-    </fragment>
     <fragment
         android:id="@+id/insertPostFragment"
         android:name="com.aurora.sampleproject2.view.fragment.InsertPostFragment"
@@ -26,5 +17,18 @@
         <action
             android:id="@+id/action_listPostFragment_to_insertPostFragment"
             app:destination="@id/insertPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/splashFragment"
+        android:name="com.aurora.sampleproject2.view.fragment.SplashFragment"
+        android:label="fragment_splash"
+        tools:layout="@layout/fragment_splash" >
+        <action
+            android:id="@+id/action_splashFragment_to_listPostFragment"
+            app:destination="@id/listPostFragment"
+            app:launchSingleTop="true"
+            app:popUpTo="@id/splashFragment"
+            app:popUpToInclusive="true"
+            />
     </fragment>
 </navigation>

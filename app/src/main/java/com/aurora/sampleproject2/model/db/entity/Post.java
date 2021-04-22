@@ -35,10 +35,7 @@ public class Post extends BaseObservable {
 
     @BindingAdapter({"poster"})
     public static void loadImage(ImageView imageView, String imageUrl) {
-        // datum.setPoster(datum.getPoster());
-//        Picasso.with(imageView.getContext())
-//                .load(imageUrl)
-//                .into(imageView);
+
         File imageFile = new File(imageUrl);
         if (imageFile.exists()) {
             imageView.setImageBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()));
@@ -52,43 +49,6 @@ public class Post extends BaseObservable {
             imageView.setImageResource(R.drawable.ic_heart_selected);
         } else {
             imageView.setImageResource(R.drawable.ic_heart_no_selected);
-        }
-    }
-
-    @BindingAdapter({"video"})
-    public static void loadVideo(VideoView videoView, String imageUrl) {
-
-        File imageFile = new File(imageUrl);
-        if (imageFile.exists()) {
-            //imageView.setImageBitmap(BitmapFactory.decodeFile(imageFile.getAbsolutePath()));
-            //  videoView.setVideoURI(Uri.parse(imageUrl));
-            // MediaController mediaController = new MediaController(videoView.getContext());
-            //  mediaController.setAnchorView(videoView);
-            //  videoView.setMediaController(mediaController);
-
-
-            // String path = yourAndroidURI.uri.toString() // "file:///mnt/sdcard/FileName.mp3"
-            // String path = yourAndroidURI.uri.toString() // "file:///mnt/sdcard/storage/emulated/0/WhatsApp/Media/WhatsApp Video/VID-20210420-WA0009.mp4"
-            // File file = new File(new URI(path));
-
-            //  String p="mnt/sdcard/WhatsApp/Media/WhatsApp Video/VID-20210420-WA0009.mp4";
-
-            //  Log.i("Test", p);
-
-            videoView.setVideoPath(imageFile.getAbsolutePath());
-
-
-            videoView.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View view) {
-                    if (videoView.isPlaying()) {
-                        videoView.pause();
-                    } else {
-                        videoView.start();
-                    }
-                }
-            });
-
         }
     }
 
