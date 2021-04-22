@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <dimen name="maigin_horizental">20dp</dimen>
+    <dimen name="marginB_itemList">5dp</dimen>
+</resources>

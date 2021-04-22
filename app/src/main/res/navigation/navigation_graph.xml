@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/navigation_graph"
+    app:startDestination="@id/listPostFragment">
+
+    <fragment
+        android:id="@+id/listFragment"
+        android:name="com.aurora.sampleproject2.view.fragment.ListFragment"
+        android:label="list_fragment"
+        tools:layout="@layout/list_fragment" >
+        <action
+            android:id="@+id/action_listFragment_to_insertPostFragment"
+            app:destination="@id/insertPostFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/insertPostFragment"
+        android:name="com.aurora.sampleproject2.view.fragment.InsertPostFragment"
+        android:label="insert_post_fragment"
+        tools:layout="@layout/insert_post_fragment" />
+    <fragment
+        android:id="@+id/listPostFragment"
+        android:name="com.aurora.sampleproject2.view.fragment.ListPostFragment"
+        android:label="ListPostFragment" >
+        <action
+            android:id="@+id/action_listPostFragment_to_insertPostFragment"
+            app:destination="@id/insertPostFragment" />
+    </fragment>
+</navigation>
