@@ -72,6 +72,9 @@ public class ListPostFragment extends Fragment {
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mViewModel = new ViewModelProvider(this).get(ListPostViewModel.class);
+    }
+
+    public void getList(){
         mViewModel.getListLiveData().observe(getViewLifecycleOwner(), new Observer<List<Post>>() {
             @Override
             public void onChanged(List<Post> p) {
@@ -91,19 +94,19 @@ public class ListPostFragment extends Fragment {
                         firstTime = false;
                     }
 
-                   new Handler().postDelayed(new Runnable() {
-                       @Override
-                       public void run() {
-                           recyclerView.smoothScrollToPosition(0);
-                       }
-                   },1000);
+                    new Handler().postDelayed(new Runnable() {
+                        @Override
+                        public void run() {
+                            recyclerView.smoothScrollToPosition(0);
+                        }
+                    },1000);
 
                     allowSetPost=false;
                 }
             }
         });
-    }
 
+    }
     private RequestManager initGlide() {
         RequestOptions options = new RequestOptions();
         return Glide.with(getContext())
@@ -168,6 +171,7 @@ public class ListPostFragment extends Fragment {
     @Override
     public void onResume() {
         allowSetPost=true;
+        getList();
         super.onResume();
     }
 }
