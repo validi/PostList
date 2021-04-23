@@ -98,11 +98,15 @@ public class PostAdpterExoPlayer extends RecyclerView.Adapter<RecyclerView.ViewH
                 holder.onBind(posts.get(position), requestManager);
                 //todo
 
-                Bitmap thumb = ThumbnailUtils.createVideoThumbnail(post.getAddressFile(), MediaStore.Images.Thumbnails.MINI_KIND);
-                Matrix matrix = new Matrix();
-                Bitmap bmThumbnail = Bitmap.createBitmap(thumb, 0, 0,
-                        thumb.getWidth(), thumb.getHeight(), matrix, true);
-                holder.mediaCoverImage.setImageBitmap(bmThumbnail);
+                try {
+                    Bitmap thumb = ThumbnailUtils.createVideoThumbnail(post.getAddressFile(), MediaStore.Images.Thumbnails.MINI_KIND);
+                    Matrix matrix = new Matrix();
+                    Bitmap bmThumbnail = Bitmap.createBitmap(thumb, 0, 0,
+                            thumb.getWidth(), thumb.getHeight(), matrix, true);
+                    holder.mediaCoverImage.setImageBitmap(bmThumbnail);
+                }catch (Exception e){
+                    Log.e("Cover",e.getMessage());
+                }
 
                 if (post.isLike()) {
                     holder.imgLike.setImageResource(R.drawable.ic_heart_selected);
