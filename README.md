@@ -1,0 +1,2 @@
+# PostList
+1- Home page:  Stream: The page has a list of types of text posts, text and photos, text and video. (Almost like Insta or Facebook but with your own design)  · Each post includes like and share buttons outside the app  · Add a floating button at the bottom of the page that opens the post add page  2- Posting page:  · Text box  · Photo or video selection box (only one can be selected for each post)  · Submit button (save the post by clicking the submit button and return to the main page and show the last post at the top of the list without updating the entire list)
